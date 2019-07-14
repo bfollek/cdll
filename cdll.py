@@ -58,3 +58,15 @@ class CircularDoublyLinkedList:
             current = current.next
             if current == self.first:
                 break
+
+    def to_list(self):
+        lst = []
+        if self.first is None:
+            return lst
+        current = self.first
+        while True:
+            lst.append(current.data)
+            current = current.next
+            if current == self.first:
+                break
+        return lst
