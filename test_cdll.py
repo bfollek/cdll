@@ -1,8 +1,7 @@
 # This runs from the circular_doubly_linked_list folder
 
-import time
-
 from data_structures.circular_doubly_linked_list.cdll import CircularDoublyLinkedList, Node
+from utilities.random_string.random_string import RandomString
 
 def test_empty():
     cdll = CircularDoublyLinkedList()
@@ -10,16 +9,16 @@ def test_empty():
 
 def test_one_node():
     cdll = CircularDoublyLinkedList()
-    node = Node(time.time())
+    node = Node(RandomString.make())
     cdll.insert_at_beg(node)
     assert cdll.to_list() == [node.data]
 
 def test_all_inserts():
     cdll = CircularDoublyLinkedList()
-    node_1 = Node(time.time() + id(cdll))
-    node_2 = Node(time.time() + id(node_1))
-    node_3 = Node(time.time() + id(node_2))
-    node_4 = Node(time.time() + id(node_3))
+    node_1 = Node(RandomString.make())
+    node_2 = Node(RandomString.make())
+    node_3 = Node(RandomString.make())
+    node_4 = Node(RandomString.make())
     cdll.insert_at_beg(node_1)
     cdll.insert_after(node_1, node_2)
     cdll.insert_at_end(node_4)
@@ -28,9 +27,9 @@ def test_all_inserts():
 
 def test_remove_from_beginning():
     cdll = CircularDoublyLinkedList()
-    node_1 = Node(time.time() + id(cdll))
-    node_2 = Node(time.time() + id(node_1))
-    node_3 = Node(time.time() + id(node_2))
+    node_1 = Node(RandomString.make())
+    node_2 = Node(RandomString.make())
+    node_3 = Node(RandomString.make())
     cdll.insert_at_beg(node_1)
     cdll.insert_after(node_1, node_2)
     cdll.insert_at_end(node_3)
@@ -40,9 +39,9 @@ def test_remove_from_beginning():
 
 def test_remove_from_middle():
     cdll = CircularDoublyLinkedList()
-    node_1 = Node(time.time() + id(cdll))
-    node_2 = Node(time.time() + id(node_1))
-    node_3 = Node(time.time() + id(node_2))
+    node_1 = Node(RandomString.make())
+    node_2 = Node(RandomString.make())
+    node_3 = Node(RandomString.make())
     cdll.insert_at_beg(node_1)
     cdll.insert_at_end(node_3)
     cdll.insert_before(node_3, node_2)
@@ -52,9 +51,9 @@ def test_remove_from_middle():
 
 def test_remove_from_end():
     cdll = CircularDoublyLinkedList()
-    node_1 = Node(time.time() + id(cdll))
-    node_2 = Node(time.time() + id(node_1))
-    node_3 = Node(time.time() + id(node_2))
+    node_1 = Node(RandomString.make())
+    node_2 = Node(RandomString.make())
+    node_3 = Node(RandomString.make())
     cdll.insert_at_beg(node_3)
     cdll.insert_at_beg(node_2)
     cdll.insert_at_beg(node_1)
