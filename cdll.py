@@ -73,4 +73,4 @@ class CircularDoublyLinkedList:
 
     def __repr__(self):
         m = map(str, self.to_list())
-        return ", ".join(m)
+        return f"CircularDoublyLinkedList({', '.join(m)})"
