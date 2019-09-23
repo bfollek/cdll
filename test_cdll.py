@@ -3,7 +3,17 @@
 from data_structures.circular_doubly_linked_list.cdll import CircularDoublyLinkedList, Node
 from utilities.random_string.random_string import RandomString
 
-def test_empty():
+def test_to_list():
+    cdll = CircularDoublyLinkedList()
+    node_1 = Node(RandomString.make())
+    cdll.insert_at_beg(node_1)
+    node_2 = Node(RandomString.make())
+    cdll.insert_after(node_1, node_2)
+    node_3 = Node(RandomString.make())
+    cdll.insert_after(node_2, node_3)
+    assert cdll.to_list() == [node_1.data, node_2.data, node_3.data]
+
+def test_to_list_empty():
     cdll = CircularDoublyLinkedList()
     assert cdll.to_list() == []
 
@@ -60,3 +70,24 @@ def test_remove_from_end():
     assert cdll.to_list() == [node_1.data, node_2.data, node_3.data]
     cdll.remove(node_3)
     assert cdll.to_list() == [node_1.data, node_2.data]
+
+def test_get_node():
+    cdll = CircularDoublyLinkedList()
+    node_1 = Node(RandomString.make())
+    node_2 = Node(RandomString.make())
+    node_3 = Node(RandomString.make())
+    cdll.insert_at_beg(node_1)
+    assert node_1 == cdll.get_node(0)
+    assert cdll.get_node(1) is None
+    cdll.insert_after(node_1, node_2)
+    cdll.insert_after(node_2, node_3)
+    assert node_2 == cdll.get_node(1)
+    assert node_3 == cdll.get_node(2)
+    assert cdll.get_node(3) is None
+    assert cdll.get_node(999) is None
+
+def test_get_node_empty():
+    cdll = CircularDoublyLinkedList()
+    assert cdll.get_node(0) is None
+    assert cdll.get_node(1) is None
+    assert cdll.get_node(100) is None
